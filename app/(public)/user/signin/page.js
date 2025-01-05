@@ -1,6 +1,6 @@
 'use client'; 
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Label, TextInput, Button } from "flowbite-react";
 import { signInWithEmailAndPassword, setPersistence, browserSessionPersistence } from "firebase/auth";
 import { getAuth } from "firebase/auth";
@@ -10,40 +10,45 @@ const SignInPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [isClient, setIsClient] = useState(false);  
   const auth = getAuth();
   const params = useSearchParams();
   const router = useRouter();
 
-  
   const returnUrl = params.get("returnUrl") || "/user/profile";
+
+  useEffect(() => {
+   
+    setIsClient(true);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
- 
     setError(null);
 
     try {
      
-      await setPersistence(auth, browserSessionPersistence);
-
-     
-      await signInWithEmailAndPassword(auth, email, password);
-
-      
-      router.push(returnUrl);
+      if (isClient) {
+        await setPersistence(auth, browserSessionPersistence);
+        await signInWithEmailAndPassword(auth, email, password);
+        router.push(returnUrl);
+      }
     } catch (error) {
       const errorMessage = error.message;
-      setError(`Błąd: ${errorMessage}`); 
+      setError(`Błąd: ${errorMessage}`);
     }
   };
+
+  if (!isClient) {
+    return null; 
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-6 rounded shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4 text-center">Logowanie</h2>
 
-        {error && <div className="text-red-500 text-center mb-4">{error}</div>} 
+        {error && <div className="text-red-500 text-center mb-4">{error}</div>}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
