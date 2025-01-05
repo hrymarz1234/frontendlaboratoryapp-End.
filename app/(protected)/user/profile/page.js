@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 import Image from 'next/image'; 
 
 const ProfilePage = () => {
-  const auth = getAuth();
+  const auth = getAuth(); //aaaa
   const router = useRouter();
 
   const {
