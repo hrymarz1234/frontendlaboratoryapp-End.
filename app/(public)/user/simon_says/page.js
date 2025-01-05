@@ -22,7 +22,7 @@ const SimonSays = () => {
   const colors = ["red", "blue", "green", "yellow"];
 
   useEffect(() => {
-    // Ensure we're on the client side before interacting with Firebase.
+
     if (typeof window !== "undefined") {
       const unsubscribe = auth.onAuthStateChanged((user) => {
         setIsLoggedIn(!!user);

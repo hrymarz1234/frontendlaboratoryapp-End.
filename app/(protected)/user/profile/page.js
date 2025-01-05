@@ -6,7 +6,7 @@ import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { db } from '@/app/lib/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { useForm } from 'react-hook-form';
-import Image from 'next/image'; // Import komponentu Image z next/image
+import Image from 'next/image'; 
 
 const ProfilePage = () => {
   const auth = getAuth();
@@ -67,7 +67,7 @@ const ProfilePage = () => {
     });
 
     return () => unsubscribe();
-  }, [auth, router, setValue]); // Dodaj zależności, aby hook reagował na zmiany
+  }, [auth, router, setValue]); 
 
   const onSubmit = async (data) => {
     try {
@@ -148,8 +148,8 @@ const ProfilePage = () => {
                 <Image
                   src={watch('photoURL')}
                   alt="Podgląd zdjęcia"
-                  width={128} // Ustaw szerokość
-                  height={128} // Ustaw wysokość
+                  width={128} 
+                  height={128} 
                   className="mt-2 rounded border border-gray-300"
                 />
               </div>

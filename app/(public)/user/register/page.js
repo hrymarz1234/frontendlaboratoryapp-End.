@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
@@ -9,9 +9,15 @@ const RegisterPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(""); 
+  const [isClient, setIsClient] = useState(false); 
   const router = useRouter(); 
-  
-  const auth = getAuth(); 
+
+  const auth = getAuth();
+
+  useEffect(() => {
+    
+    setIsClient(true);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,26 +29,29 @@ const RegisterPage = () => {
 
     try {
       
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      console.log("Użytkownik zarejestrowany!");
+      if (isClient) {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        console.log("Użytkownik zarejestrowany!");
 
-      
-      await sendEmailVerification(auth.currentUser);
-      console.log("Wysłano e-mail weryfikacyjny!");
+        await sendEmailVerification(auth.currentUser);
+        console.log("Wysłano e-mail weryfikacyjny!");
 
-     
-      router.push("/user/verify");
+        router.push("/user/verify");
+      }
     } catch (err) {
       setError(err.message); 
       console.error("Błąd rejestracji:", err);
     }
   };
 
+  if (!isClient) {
+    return null; 
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-6 rounded shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4 text-center">Rejestracja</h2>
-        
         
         {error && <div className="text-red-500 text-center mb-4">{error}</div>}
 
