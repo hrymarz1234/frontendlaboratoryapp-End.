@@ -1,10 +1,12 @@
-'use client'; 
+'use client';
 
 import React, { useState, useEffect } from "react";
 import { Label, TextInput, Button } from "flowbite-react";
 import { signInWithEmailAndPassword, setPersistence, browserSessionPersistence } from "firebase/auth";
 import { getAuth } from "firebase/auth";
 import { useSearchParams, useRouter } from "next/navigation";
+import dynamic from 'next/dynamic';
+
 
 const SignInPage = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +20,7 @@ const SignInPage = () => {
   const returnUrl = params.get("returnUrl") || "/user/profile";
 
   useEffect(() => {
-    // Ensure this runs only on the client-side
+    
     setIsClient(true);
   }, []);
 
@@ -27,9 +29,9 @@ const SignInPage = () => {
     setError(null);
 
     try {
-      // Only run Firebase code on client-side
+     
       if (isClient) {
-        await setPersistence(auth, browserSessionPersistence);  // Ensures the session persists in browser
+        await setPersistence(auth, browserSessionPersistence);  
         await signInWithEmailAndPassword(auth, email, password);
         router.push(returnUrl);
       }
@@ -40,7 +42,7 @@ const SignInPage = () => {
   };
 
   if (!isClient) {
-    return null; // Prevent rendering the form until client-side
+    return null; 
   }
 
   return (
@@ -82,4 +84,4 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+export default dynamic(() => Promise.resolve(SignInPage), { ssr: false });
