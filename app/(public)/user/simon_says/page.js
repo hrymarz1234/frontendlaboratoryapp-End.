@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -22,11 +22,14 @@ const SimonSays = () => {
   const colors = ["red", "blue", "green", "yellow"];
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setIsLoggedIn(!!user);
-      setLoading(false);
-    });
-    return () => unsubscribe();
+    // Ensure we're on the client side before interacting with Firebase.
+    if (typeof window !== "undefined") {
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        setIsLoggedIn(!!user);
+        setLoading(false);
+      });
+      return () => unsubscribe();
+    }
   }, [auth]);
 
   const handleLogin = async (e) => {
@@ -71,7 +74,7 @@ const SimonSays = () => {
     if (sequence.length > 0 && !isPlayerTurn) {
       playSequence();
     }
-  }, [sequence, isPlayerTurn, playSequence]); // Dodano 'playSequence' jako zależność
+  }, [sequence, isPlayerTurn]);
 
   const highlightButton = (color) => {
     const button = document.getElementById(color);
