@@ -1,0 +1,87 @@
+[debug] [2025-01-05T17:27:25.362Z] ----------------------------------------------------------------------
+[debug] [2025-01-05T17:27:25.369Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\AMD\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2025-01-05T17:27:25.369Z] CLI Version:   13.29.1
+[debug] [2025-01-05T17:27:25.369Z] Platform:      win32
+[debug] [2025-01-05T17:27:25.370Z] Node Version:  v22.12.0
+[debug] [2025-01-05T17:27:25.370Z] Time:          Sun Jan 05 2025 18:27:25 GMT+0100 (czas środkowoeuropejski standardowy)
+[debug] [2025-01-05T17:27:25.370Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-05T17:27:25.506Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-05T17:27:25.506Z] > authorizing via signed-in user (hrymarzz@gmail.com)
+[debug] [2025-01-05T17:27:25.506Z] [iam] checking project frontendlaboratoryapp for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-01-05T17:27:25.508Z] Checked if tokens are valid: true, expires at: 1736101515150
+[debug] [2025-01-05T17:27:25.508Z] Checked if tokens are valid: true, expires at: 1736101515150
+[debug] [2025-01-05T17:27:25.510Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/frontendlaboratoryapp:testIamPermissions [none]
+[debug] [2025-01-05T17:27:25.510Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/frontendlaboratoryapp:testIamPermissions x-goog-quota-user=projects/frontendlaboratoryapp
+[debug] [2025-01-05T17:27:25.510Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/frontendlaboratoryapp:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-01-05T17:27:26.457Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/frontendlaboratoryapp:testIamPermissions 200
+[debug] [2025-01-05T17:27:26.457Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/frontendlaboratoryapp:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-01-05T17:27:26.458Z] Checked if tokens are valid: true, expires at: 1736101515150
+[debug] [2025-01-05T17:27:26.458Z] Checked if tokens are valid: true, expires at: 1736101515150
+[debug] [2025-01-05T17:27:26.458Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/frontendlaboratoryapp [none]
+[debug] [2025-01-05T17:27:26.833Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/frontendlaboratoryapp 200
+[debug] [2025-01-05T17:27:26.834Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/frontendlaboratoryapp {"projectId":"frontendlaboratoryapp","projectNumber":"753404626082","displayName":"frontendlaboratoryapp","name":"projects/frontendlaboratoryapp","resources":{"hostingSite":"frontendlaboratoryapp"},"state":"ACTIVE","etag":"1_b40b6035-fcae-45a5-9455-d76bae7aeb80"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 15.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2025-01-05T17:28:25.065Z] Checked if tokens are valid: true, expires at: 1736101515150
+[debug] [2025-01-05T17:28:25.065Z] Checked if tokens are valid: true, expires at: 1736101515150
+[debug] [2025-01-05T17:28:25.065Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/frontendlaboratoryapp/sites/frontendlaboratoryapp [none]
+[debug] [2025-01-05T17:28:26.104Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/frontendlaboratoryapp/sites/frontendlaboratoryapp 200
+[debug] [2025-01-05T17:28:26.104Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/frontendlaboratoryapp/sites/frontendlaboratoryapp {"name":"projects/frontendlaboratoryapp/sites/frontendlaboratoryapp","defaultUrl":"https://frontendlaboratoryapp.web.app","type":"DEFAULT_SITE"}
+[info]    ▲ Next.js 15.0.3
+
+[info]    - Environments: .env
+
+
+[info]    Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info] 
+./app/(public)/user/simon_says/page.js
+59:9  Warning: The 'playSequence' function makes the dependencies of useEffect Hook (at line 74) change on every render. Move it inside the useEffect callback. Alternatively, wrap the definition of 'playSequence' in its own useCallback() Hook.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/building-your-application/configuring/eslint#disabling-rules
+
+[info]    Collecting page data ...
+
+[info]    Generating static pages (0/11) ...
+
+[info] [2025-01-05T17:29:35.379Z]  @firebase/analytics: Analytics: Firebase Analytics is not supported in this environment. Wrap initialization of analytics in analytics.isSupported() to prevent initialization in unsupported environments. Details: (1) Cookies are not available. (analytics/invalid-analytics-context).
+Error occurred prerendering page "/user/register". Read more: https://nextjs.org/docs/messages/prerender-error
+ReferenceError: window is not defined
+    at eV (C:\Users\AMD\Desktop\frontendlaboratoryapp-end-main\.next\server\chunks\499.js:5:178113)
+    at tl (C:\Users\AMD\Desktop\frontendlaboratoryapp-end-main\.next\server\chunks\499.js:5:184251)
+    at i.instanceFactory (C:\Users\AMD\Desktop\frontendlaboratoryapp-end-main\.next\server\chunks\499.js:5:185020)
+    at a.getOrInitializeService (C:\Users\AMD\Desktop\frontendlaboratoryapp-end-main\.next\server\chunks\499.js:5:83637)
+    at a.initialize (C:\Users\AMD\Desktop\frontendlaboratoryapp-end-main\.next\server\chunks\499.js:5:83012)
+    at tc (C:\Users\AMD\Desktop\frontendlaboratoryapp-end-main\.next\server\chunks\499.js:5:184647)
+    at tu (C:\Users\AMD\Desktop\frontendlaboratoryapp-end-main\.next\server\chunks\499.js:5:184468)
+    at 53104 (C:\Users\AMD\Desktop\frontendlaboratoryapp-end-main\.next\server\chunks\955.js:1:6652)
+    at t (C:\Users\AMD\Desktop\frontendlaboratoryapp-end-main\.next\server\webpack-runtime.js:1:128)
+    at 52472 (C:\Users\AMD\Desktop\frontendlaboratoryapp-end-main\.next\server\chunks\955.js:1:5924)
+Export encountered an error on /(public)/user/register/page: /user/register, exiting the build.
+
+[info]  ⨯ Static worker exited with code: 1 and signal: null
+
+[debug] [2025-01-05T17:29:48.145Z] SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at findDependency (C:\Users\AMD\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\utils.js:188:23)
+    at getNextVersion (C:\Users\AMD\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\next\utils.js:200:51)
+    at getConfig (C:\Users\AMD\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\next\index.js:466:52)
+    at async build (C:\Users\AMD\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\next\index.js:83:59)
+    at async prepareFrameworks (C:\Users\AMD\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:224:33)
+    at async deploy (C:\Users\AMD\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:58:13)
+[error] 
+[error] Error: An unexpected error has occurred.
