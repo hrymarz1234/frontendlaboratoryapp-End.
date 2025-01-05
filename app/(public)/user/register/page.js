@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import dynamic from 'next/dynamic';
+
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +17,6 @@ const RegisterPage = () => {
   const auth = getAuth();
 
   useEffect(() => {
-    
     setIsClient(true);
   }, []);
 
@@ -28,7 +29,6 @@ const RegisterPage = () => {
     }
 
     try {
-      
       if (isClient) {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         console.log("Użytkownik zarejestrowany!");
@@ -110,4 +110,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default dynamic(() => Promise.resolve(RegisterPage), { ssr: false });
