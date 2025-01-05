@@ -18,7 +18,7 @@ const SignInPage = () => {
   const returnUrl = params.get("returnUrl") || "/user/profile";
 
   useEffect(() => {
-   
+    // Ensure this runs only on the client-side
     setIsClient(true);
   }, []);
 
@@ -27,9 +27,9 @@ const SignInPage = () => {
     setError(null);
 
     try {
-     
+      // Only run Firebase code on client-side
       if (isClient) {
-        await setPersistence(auth, browserSessionPersistence);
+        await setPersistence(auth, browserSessionPersistence);  // Ensures the session persists in browser
         await signInWithEmailAndPassword(auth, email, password);
         router.push(returnUrl);
       }
@@ -40,7 +40,7 @@ const SignInPage = () => {
   };
 
   if (!isClient) {
-    return null; 
+    return null; // Prevent rendering the form until client-side
   }
 
   return (
