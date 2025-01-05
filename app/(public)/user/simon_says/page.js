@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
+
 
 const SimonSays = () => {
   const [sequence, setSequence] = useState([]);
@@ -16,13 +18,12 @@ const SimonSays = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(true);
   const [gameStarted, setGameStarted] = useState(false);
-  const [count, setCount] = useState(0); 
+  const [count, setCount] = useState(0);
   const auth = getAuth();
   const router = useRouter();
   const colors = ["red", "blue", "green", "yellow"];
 
   useEffect(() => {
-
     if (typeof window !== "undefined") {
       const unsubscribe = auth.onAuthStateChanged((user) => {
         setIsLoggedIn(!!user);
@@ -55,7 +56,7 @@ const SimonSays = () => {
     setScore(0);
     setMessage("Obserwuj sekwencję...");
     setGameOver(false);
-    setCount(0); 
+    setCount(0);
     addColorToSequence();
   };
 
@@ -105,7 +106,7 @@ const SimonSays = () => {
       setIsPlayerTurn(false);
       setTimeout(() => {
         addColorToSequence();
-        setCount((prev) => prev + 1); 
+        setCount((prev) => prev + 1);
       }, 1000);
     }
   };
@@ -125,9 +126,9 @@ const SimonSays = () => {
     setGameStarted((prev) => !prev);
     setMessage(gameStarted ? "Kliknij POWER, aby włączyć grę." : "Kliknij START, aby rozpocząć.");
     if (gameStarted) {
-      setCount(0); 
+      setCount(0);
     } else {
-      setCount(1); 
+      setCount(1);
     }
   };
 
@@ -285,4 +286,4 @@ const SimonSays = () => {
   );
 };
 
-export default SimonSays;
+export default dynamic(() => Promise.resolve(SimonSays), { ssr: false });
