@@ -2,6 +2,7 @@ Jest to projekt zaliczeniowy działający na next.js z pomocą firebase oraz gr�
 Konto z autoryzacją: 
 -email: hrymarzz@gmail.com
 -hasło: kostur1
+zalecam profilaktyczne npm install
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
